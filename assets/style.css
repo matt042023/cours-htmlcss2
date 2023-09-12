@@ -1,0 +1,358 @@
+:root{
+    --color-primary : #fff;
+    --color-secondary : #222;
+    --color-text : #6f6a6a;
+    --ff-titre : "manrope", sans-serif;
+    --ff-text : "rubic", sans-serif;
+}
+
+@font-face {
+    font-family: "manrope";
+    src: url(./Manrope-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: "rubic";
+    src: url(./Rubik-VariableFont_wght.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    scroll-behavior: smooth;
+    text-decoration: none;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+/* ---------NAVBAR------------------ */
+
+.nav{
+    position: fixed;
+    top: 0;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 6rem;
+    padding: 1rem 2rem;
+    /* 1rem en haut et en bas et 2rem sur les coté */
+    transition: 0.3s ease-in;
+    background-color: rgba(5, 5, 5,0.894);
+    backdrop-filter: blur(4px);
+    /* La propriété CSS backdrop-filter permet d'obtenir un effet de flou ou de diffusion de la couleur sur la zone derrière l'élément. L'effet étant situé derrière l'élément, il pourra être observé en ajustant la transparence de l'élément. */
+    z-index: 1;
+
+    transform: translateX(100%);
+    animation: show 1s forwards ;
+    /* l'animation commence à 100% sur l'axe des X et joue l'animation "show" pendant 1s puis reste en place : voir le @keyframes show  */
+}
+
+.nav .logo{
+    font-family: var(--ff-titre);
+    color: var(--color-primary);
+}
+
+.nav .title{
+    font-size: 30px;
+}
+
+.nav .sub-title{
+    font-size: 20px;
+
+}
+
+.nav .nav-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.nav .nav-list .nav-list-item{
+    color: var(--color-primary);
+    font-size: 20px;
+    font-family: var(--ff-titre);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav .nav-list .nav-list-item:hover{
+    color: darkturquoise;
+    transform: translateY(-5px);
+}
+
+.actions{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.actions-item {
+    position: relative;
+    /* repere pour la position absolute des element de décompte */
+}
+
+.actions-item i {
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    font-size: 20px;
+}
+
+/* ---pour créer un element qui vient apres chaque element du bloc selectionné----
+ici : ------une petite bulle de decompte apres les icone panier et coeur :
+dans la div "actions-item" les element qui contiennent "count" dans leur identifiant*/
+.actions-item .count::after {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    /* positionnement : par rapport à sa position relative "actions-item" -5px en haut et -5px à droite  */
+
+    content: "0";
+    font-size: 10px;
+    /* contient un "0" d'une taille de 10px */
+
+    background-color: rgb(28, 129, 131);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    /* création d'un cerle de 14px de rayon et couleur en font  */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* positionnement des éléments à l'interieur du cercle centré sur X et Y  */
+}
+
+.actions-item :hover{
+    color: darkturquoise;
+    transform: translateY(-5px);
+}
+
+/* ------------SECTION 1------------------ */
+
+/* lA POSITION DE LA BARRE DE NAVIGATION ETANT FIXE ELLE N'EST PAS PRIS EN COMPTE  DANS LE POSITIONNEMENT DE LA SECTION. LA SECTION SE PLACE ALORS DERRIERE LA BARRE DE NAVIGATION. IL FAUT DONC DEFINIR LE POSITIONNEMENT DE LA SECTION*/
+
+.section-one{
+    min-height: 100vh;
+    /* hauteur minimum d la section 100% de la hauteur de la fenetre du navigateur */
+
+    background-image: url(../assets/image/24h_du_mans.jpeg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* image centré qui ne se repete pas et zoom l'image pour couvrir tout le fond de la section */
+
+    /* positionnement du texte  */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2rem 4rem;
+    /* positionnement du texte avec flex en colonne à la fin de la section  et marge interieur 2rem en haut et en bas et 4rem à gauche et à droite */
+
+    position: relative;
+
+    
+}
+
+.section-one h1{
+    font-size: 60px;
+    font-family: var(--ff-titre);
+    color: var(--color-primary);
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    animation: show 1s forwards;
+    transform: translateX(-100%);
+        /* l'animation commence à 100% sur l'axe des X et joue l'animation "show" pendant 1s puis reste en place : voir le @keyframes show  */
+}
+
+@keyframes show {
+    to {
+        transform: translateX(0);
+        /* l'animation show deplace l'ement selectionner sur l'axe des X jusqu'a son point d'origine "0" */
+    }
+}
+
+.section-one p{
+    font-family: var(--ff-text);
+    font-size: 14px;
+    color: var(--color-primary);
+    max-width: 60%;
+    /* le paragraphe ne prend que 60% de son parent  */
+    line-height: 25px;
+    /* hauuteur des lignes */
+    transform: translateX(-100%);
+    animation: show 1s forwards ;
+      /* l'animation commence à 100% sur l'axe des X et joue l'animation "show" pendant 1s puis reste en place : voir le @keyframes show  */
+}
+
+
+/* ----------SECTION 2------------ */
+
+.section-two{
+    max-width: 60%;
+    /* le contenu à une largeur de 60% de sa section */
+    margin: 6rem auto;
+    /* marhe de 6rem en hau et en bas et automatique à droite et à gauche (donc centré) */
+    display: flex;
+    flex-direction: column;
+    /* positionnement "flex" en colonne */
+    gap: 2rem;
+    /* espacement entre les elements enfant de la section (ici les <p> et <aside> de 2rem */
+}
+
+.section-two .text{
+    font-family: var(--ff-text);
+    font-size: 18px;
+    /* taille de la police */
+    line-height: 32px;
+    /* hauteur de ligne  pour aérer le texte*/
+    font-weight: 400;
+    /* La propriété CSS font-weight permet de définir la graisse utilisée pour le texte. Les niveaux de graisse disponibles dépendent de la police (cf. font-family). Certaines fontes n'existent qu'avec les niveaux de graisses normal et bold. */
+    color: var(--color-text);
+}
+
+.section-two .intro{
+    font-size: 24px;
+    line-height: 38px;
+    font-weight: 800;
+    color: var(--color-secondary);
+}
+
+.section-two h2{
+    font-family: var(--ff-titre);
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: 800;
+}
+
+.section-two .aside{
+    color: var(--color-primary);
+    background-color: var(--color-secondary);
+    padding: 2rem;
+    text-align: justify;
+}
+
+/* -----------SECTION 3------------- */
+.section-three{
+    max-width: 80%;
+    margin: 6rem auto 35rem auto;
+    /* largeur maximun 80% de l'element parent avec des marges de 6rem en haut, auto à droite, 35rem en bas, et auto à gauche  */
+    display: flex;
+    flex-direction: column;
+    /* élements enfant sont disposés en colonne les uns en desous des autres */
+    gap: 3rem;
+    /* Espace entre les elements */
+    position: relative;
+    /* accrage pour la position abolut du "clip-path" */
+}
+
+.flex-items{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    /* Les photos sont aligné à l'horizontal et centré sur la largeur de la page avec un espace entre les photos de 2rem */
+}
+
+.img-container{
+    position: relative;
+    /* accroche pour le bloc "img-container h3" */
+    width: 350px;
+    height: 400px;
+    /* image de 350px de largeur et 400px de hauteur */
+
+    box-shadow: 2px 5px 15px 5px black;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.img-container:hover{
+    transform: scale(1.02);
+    /* quand le curseur est sur la photo est s'agrandi de 1.02 */
+}
+
+.img-container .img {
+    max-width: 100%;
+    height: 100%;
+    /* l'ensemble des image ne peuvent prendre maximum 100% du parent en largeur et 100% en hauteur */
+    object-fit: cover;
+    /* La propriété CSS object-fit définit la façon dont le contenu d'un élément remplacé (<img> ou <video> par exemple) doit s'adapter à son conteneur en utilisant sa largeur et sa hauteur. ici en couverture c'est à dire qu'il zoom jusqu'a prendre toute la place de l'element */
+    object-position: center;
+    /* puis la photo est centré */
+}
+
+.img-container h3 {
+    position: absolute;
+    /* position par rappor au bloc img-container */
+    bottom : 10%;
+    /* placement du titre a 10% du bas du bloc */
+    
+    /* centrer le texte  */
+    left: 50%;
+    /* espace de 50% du parent à gauche */
+    transform: translateX(-50%);
+    /* transport le texte à 50% de sa largeur sur la gauche */
+
+    font-family: var(--ff-titre);
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: 900;
+    /* epaisseur (graisse) de l'écriture */
+    width: 80%;
+    /* La propriété width permet de définir la largeur de la boîte du contenu d'un élément.ici le texte contenu dans la photo prend 80% de la largeur de la photo */
+    text-align: center;
+    /* La propriété text-align définit l'alignement horizontal d'un élément de bloc ou de la boîte d'une cellule de tableau. Cette propriété fonctionne donc de façon analogue à vertical-align mais dans le sens horizontal. */
+    color: var(--color-primary);
+    text-shadow: 3px 5px 2px #474747;
+    /* ombre du texte  */
+}
+
+.section-three p{
+    max-width: 70%;
+    margin: 2rem auto;
+    font-family: var(--ff-titre);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px;
+    color: var(--color-text);
+}
+
+.section-three h2{
+    font-family: var(--ff-titre);
+    font-size: 30px;
+    line-height: 32px;
+    margin-left: 10rem;
+}
+
+.section-three .clip-path {
+    -webkit-clip-path: polygon(1% 29%, 100% 0, 100% 67%, 0% 100%);
+    clip-path: polygon(1% 29%, 100% 0, 100% 67%, 0% 100%);
+    background-image: url(./image/voiture-course.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 30rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -30rem;
+    min-width: 100vw;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
